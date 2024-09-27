@@ -1,0 +1,11 @@
+pydicom==2.4.4
+numpy
+matplotlib
+scikit-image
+pillow
+tensorflow==2.15
+#-q keras-ocr
+#opencv-python
+#pandas
+thefuzz
+phonenumbers
