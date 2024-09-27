@@ -1,0 +1,204 @@
+{
+  "default_anon_values": [
+    { "vr": "DT", "value": "00010101010101.010101+0101" },
+    { "vr": "TM", "value": "000000.000000" },
+    { "vr": "DA", "value": "00010101" },
+    { "vr": "LO", "value": "Anonymized" },
+    { "vr": "LT", "value": "Anonymized" },
+    { "vr": "SH", "value": "Anonymized" },
+    { "vr": "PN", "value": "Anonymized" },
+    { "vr": "CS", "value": "Anonymized" },
+    { "vr": "ST", "value": "Anonymized" },
+    { "vr": "UT", "value": "Anonymized" },
+    { "vr": "UN", "value": "Anonymized" },
+    { "vr": "FD", "value": "0" },
+    { "vr": "FL", "value": "0" },
+    { "vr": "SS", "value": "0" },
+    { "vr": "US", "value": "0" },
+    { "vr": "SL", "value": "0" },
+    { "vr": "UL", "value": "0" },
+    { "vr": "DS", "value": "0" },
+    { "vr": "IS", "value": "0" },
+    { "vr": "SQ", "value": "-" },
+    { "vr": "UI", "value": "-" },
+    { "vr": "AE", "value": "-" },
+    { "vr": "AS", "value": "-" },
+    { "vr": "AT", "value": "-" },
+    { "vr": "OB", "value": "-" },
+    { "vr": "OW", "value": "-" },
+    { "vr": "OD", "value": "-" },
+    { "vr": "OF", "value": "-" }
+  ],
+
+
+"custom_actions": [
+    {"action":"base","value":"yes"},  
+    {"action":"clean_pixel_data_option","value":"yes"},
+    {"action":"clean_recognizable_visual_features_option","value":"yes"},
+    {"action":"clean_graphics_option","value":"no"},
+    {"action":"clean_structured_content_option","value":"yes"},
+    {"action":"clean_descriptors_option","value":"yes"},
+    {"action":"retain_longitudinal_temporal_information_with_full_dates_option","value":"no"},
+    {"action":"retain_longitudinal_temporal_information_with_modified_dates_option","value":"yes"},
+    {"action":"retain_patient_characteristics_option","value":"yes"},
+    {"action":"retain_device_identity_option","value":"yes"},
+    {"action":"retain_institution_identity_option","value":"no"},
+    {"action":"retain_uid_option","value":"no"},
+    {"action":"retain_safe_private_option","value":"yes"}
+  ],
+
+  "tag_list_to_check_by_keep": [
+    {
+      "_comment": "study date",
+      "tag_group": "0x0008",
+      "tag_element": "0x0020"
+    },
+    {
+      "_comment": "serie date",
+      "tag_group": "0x0008",
+      "tag_element": "0x0021"
+    },
+    {
+      "_comment": "referring physician",
+      "tag_group": "0x0008",
+      "tag_element": "0x0090"
+    },
+    {
+      "_comment": "verifyng observer",
+      "tag_group": "0x0040",
+      "tag_element": "0xa075"
+    },
+    {
+      "_comment": "operators name",
+      "tag_group": "0x0008",
+      "tag_element": "0x1070"
+    },
+    {
+      "_comment": "perf phys name name",
+      "tag_group": "0x0008",
+      "tag_element": "0x1050"
+    },
+    {
+      "_comment": "phsy.record name",
+      "tag_group": "0x0008",
+      "tag_element": "0x1048"
+    },
+    {
+      "_comment": "patient name",
+      "tag_group": "0x0010",
+      "tag_element": "0x0010"
+    },
+    {
+      "_comment": "patient id",
+      "tag_group": "0x0010",
+      "tag_element": "0x0020"
+    },
+    {
+      "_comment": "patient birth date",
+      "tag_group": "0x0010",
+      "tag_element": "0x0030"
+    }],
+
+  "text_to_clean": 
+    {
+      "values": ["nosocomio","clinic","klinik","hospital","department","medical","university", 
+                "center", "clinician","surgeon","building",
+                  "kranken","hospice","memorial","sanatorium",
+                  "sanitorium", "infirmary","home", "haus", "house",
+                  "street", "st.", "avenue", "boulevard","road","route"]
+    },
+
+    "prefix_to_check": 
+    {
+      "values": ["for: ","on:", "to:", "at:", "by:", "call:","for", "on", "to", "at", "by", "call"]
+    },
+
+    "tag_list": [
+      {
+        "_comment": "keep the value that should be cleaned",
+        "tag_group": "0x0032",
+        "tag_element": "0x1021",
+        "action": "EMPTY",
+        "values": []
+      },
+
+      {
+        "_comment": "keep the value that should be cleaned",
+        "tag_group": "0x0008",
+        "tag_element": "0x0054",
+        "action": "EMPTY",
+        "values": []
+      },
+      {
+        "_comment": "keep the value that should be cleaned",
+        "tag_group": "0x0040",
+        "tag_element": "0x0241",
+        "action": "EMPTY",
+        "values": []
+      },
+      {
+        "_comment": "keep the value that should be cleaned",
+        "tag_group": "0x0012",
+        "tag_element": "0x0051",
+        "action": "EMPTY",
+        "values": []
+      },
+      {
+        "_comment": "keep the value that should be cleaned",
+        "tag_group": "0x0008",
+        "tag_element": "0x1010",
+        "action": "EMPTY",
+        "values": []
+      },
+      {
+        "_comment": "remove phone number and clean sensible data",
+        "tag_group": "0x0010",
+        "tag_element": "0x21b0",
+        "action": "PHONE",
+        "values": []
+      },
+      {
+        "_comment": "remove phone number and clean sensible data",
+        "tag_group": "0x0040",
+        "tag_element": "0x0310",
+        "action": "PHONE",
+        "values": []
+      },
+      {
+        "_comment": "retain the value,  clinical trial sponsor",
+        "tag_group": "0x0012",
+        "tag_element": "0x0010",
+        "action": "SKIP",
+        "values": []
+      },
+      {
+        "_comment": "retain the value,  TX UID",
+        "tag_group": "0x0002",
+        "tag_element": "0x0010",
+        "action": "SKIP",
+        "values": []
+      },
+      {
+        "_comment": "retain the value,  SOP UID",
+        "tag_group": "0x0008",
+        "tag_element": "0x1150",
+        "action": "SKIP",
+        "values": []
+      },
+      {
+        "_comment": "check if the value is ok and retain it, series number",
+        "tag_group": "0x0020",
+        "tag_element": "0x0011",
+        "action": "CHEKANDRETAIN",
+        "values": []
+      },
+
+      {
+        "_comment": "check if the person name if present and delete justit (protocol name)",
+        "tag_group": "0x0018",
+        "tag_element": "0x1030",
+        "action": "CHEKPERSONNAME",
+        "values": []
+      }
+    ]
+  }
