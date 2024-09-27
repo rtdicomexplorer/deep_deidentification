@@ -22,23 +22,6 @@ DEIDENTIFICATION of dicom studies, for participating to MIDI-B De-identification
 - a log file has already created.
 
 
-# Build and Test
-https://wiki.cancerimagingarchive.net/display/Public/Submission+and+De-identification+Overview
-
-DEMO DATA like described in  https://www.synapse.org/Synapse:syn53065760/wiki/627887
-
-
-About RT-DATA:
-
-CT  |
-    |
-    STRUCT  |
-            |
-            PLAN    |
-                    |
-                    DOSE
-
-
 # Contribute
 
 https://dicom.nema.org/dicom/2013/output/chtml/part15/sect_E.3.html#sect_E.3.1
@@ -46,13 +29,13 @@ https://dicom.nema.org/dicom/2013/output/chtml/part15/sect_E.3.html#sect_E.3.1
 
 # package used
 
-pydicom==2.4.4
-numpy
-matplotlib
-scikit-image
-pillow
-tensorflow==2.15
-keras-ocr
-thefuzz
+- pydicom==2.4.4
+- numpy
+- matplotlib
+- scikit-image
+- pillow
+- tensorflow==2.15
+- keras-ocr
+- thefuzz
 
 
