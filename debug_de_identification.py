@@ -4,11 +4,11 @@ import asyncio
 import time
 import logging
 logger = logging.getLogger(__name__)
-log_file_name = f"{datetime.now().strftime('%Y%m%d')}_anonimizer.log"
+log_file_name = f"{datetime.now().strftime('%Y%m%d')}.log"
 
 input_data_folder =  r'C:\challenge_testdata\input_data'
-rules_file = './anon_custom_rules.json'
-basic_profile_file = './basic_anonymization_profile.csv'
+rules_file = './custom_rules.json'
+basic_profile_file = './base_anonymization_profile.csv'
 
 execute_text_detection = False
 async def main():
