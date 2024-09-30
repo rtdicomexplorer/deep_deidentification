@@ -756,8 +756,9 @@ class DicomDeIdentification:
                 self.__extra_replacement_values = {}
                 print("Cannot read the extra rules file")
 
-    def __anonymize_dataset_inside(self, dataset: dcm.Dataset) -> None:
-        """Process the recursively the DICOM tags
+    def __de_identify_dataset_inside(self, dataset: dcm.Dataset) -> None:
+        """
+        Process the recursively de-identifies DICOM tags
         """       
 
         for data_element in dataset:
@@ -769,7 +770,7 @@ class DicomDeIdentification:
                 tag_element = "%04x" % data_element.tag.element
                 if vr  == 'SQ':# and data_element.value is type(Sequence):
                     for sub_dataset in data_element.value:
-                        self.__anonymize_dataset_inside(sub_dataset)
+                        self.__de_identify_dataset_inside(sub_dataset)
                 else:
 
                     if  (data_element.tag.group,data_element.tag.element) in self.__extra_rules:
@@ -808,10 +809,10 @@ class DicomDeIdentification:
 
 
 
-    def __anonymize_dataset(self, dataset: dcm.Dataset) -> None:
+    def __de_identify_dataset(self, dataset: dcm.Dataset) -> None:
         """
-        Anonymize a pydicom Dataset by using anonymization rules which links an action to a tag
-        :param dataset: Dataset to be anonymize
+        De-identificates a pydicom Dataset using custom rules and parametres
+        :param dataset: Dataset to be de-identified
         """
         self.__sensible_data_to_clean = PREFIX_NAME # 'prof.','dr.']
         self.__preson_name_to_clean = []
@@ -851,8 +852,8 @@ class DicomDeIdentification:
                         self.__sensible_data_to_clean.append(val) 
 
                            
-        self.__anonymize_dataset_inside(dataset)
-        self.__anonymize_dataset_inside(dataset.file_meta)
+        self.__de_identify_dataset_inside(dataset)
+        self.__de_identify_dataset_inside(dataset.file_meta)
 
         if self.__delete_private_tags:
             self.__remove_private_tags(dataset)
@@ -973,7 +974,7 @@ class DicomDeIdentification:
             if os.path.isfile(file_name):
                 index +=1
                 ds = dcm.dcmread(file_name, force=True)
-                self.__anonymize_dataset(ds)
+                self.__de_identify_dataset(ds)
                 self.__save_files(ds, output_folder,csv_folder, fname, save_changes)
                 self.__reset_dictionaries()
                 yield str(index)+'/'+str(count)
@@ -1040,7 +1041,7 @@ class DicomDeIdentification:
                                     ix_inst +=1
                                     instanceUID = f"{serie_uid}.{ix_inst}"
                                     self.__dictionary_uids[instance.SopInstanceUID]= instanceUID                                   
-                                    self.__anonymize_dataset(instance.DataSet)
+                                    self.__de_identify_dataset(instance.DataSet)
                                     self.__sensible_burning_data = ' '.join(self.__sensible_burning_data).replace('^',' ').lower().split()
                                     self.__sensible_burning_data = list(set(self.__sensible_burning_data))
                                     self.__sensible_burning_data.append('dob')

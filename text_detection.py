@@ -1,3 +1,4 @@
+## rtdicomexplorer@gmail.com 30.09.2024
 import pydicom as dcm
 import numpy as np
 import skimage 
