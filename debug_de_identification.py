@@ -1,3 +1,4 @@
+## rtdicomexplorer@gmail.com 30.09.2024
 from deep_de_identification import DicomDeIdentification
 from datetime import datetime
 import asyncio

@@ -1,4 +1,4 @@
-
+## rtdicomexplorer@gmail.com 30.09.2024
 import re
 import os
 import csv
