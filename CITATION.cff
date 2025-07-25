@@ -6,6 +6,5 @@ authors:
     given-names: Michele
     orcid: https://orcid.org/0009-0000-5067-9814
 version: 1.0.0
-doi: 10.1234/zenodo.1234567  # optional, if you've archived it in Zenodo
 date-released: 2025-07-25
 url: https://github.com/rtdicomexplorer/deep_deidentification
