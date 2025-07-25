@@ -38,4 +38,21 @@ https://dicom.nema.org/dicom/2013/output/chtml/part15/sect_E.3.html#sect_E.3.1
 - keras-ocr
 - thefuzz
 
+## 📖 Citation
+
+If you use this code or part of it in your research, please cite:
+
+[Michele, Bufano], *DICOM deep deidentification*, GitHub Repository, https://github.com/rtdicomexplorer/deep_deidentification
+
+BibTeX:
+
+```bibtex
+@misc{your_project_2025,
+  author       = {Michele Bufano},
+  title        = {DICOM deep deidentification},
+  year         = 2024,
+  publisher    = {GitHub},
+  journal      = {GitHub repository},
+  howpublished = {\url{https://github.com/rtdicomexplorer/deep_deidentification}},
+}
 
